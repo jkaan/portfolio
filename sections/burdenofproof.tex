@@ -6,7 +6,14 @@ Dit hoofdstuk bevat de bewijslast voor de leerdoelen die in het Plan van Aanpak 
 \subsection{Meteor, een JavaScript framework}
 Het leerdoel dat hierbij hoort: Meteor leren kennen door middel van een applicatie te maken die real-time informatie weergeeft over een klant’s social media kanalen aan meerdere eind-gebruikers, dit wordt verwezenlijkt door Meteor’s collections en het publish-subscribe pattern te gebruiken.
 
-Normaliter deed ConnectSB alles met PHP en met name het Symfony framework. Profile2Connect was een speciaal geval, het moest mogelijk zijn om heel veel data op te slaan en dynamisch velden toe te voegen aan de database. Door deze speciale eisen is er toen gekozen voor Meteor. Meteor is een JavaScript framework waarmee het mogelijk is om de backend evenals de frontend in JavaScript te programmeren. Meteor is momenteel nog in de beta-versie, namelijk versie 0.9.3.1.
+Normaliter deed ConnectSB alles met PHP en dan vooral het Symfony framework. Profile2Connect was een speciaal geval, het moest mogelijk zijn om heel veel data op te slaan en dynamisch velden toe te voegen aan de database. Door deze speciale eisen is er toen gekozen voor Meteor. Meteor is een JavaScript framework waarmee het mogelijk is om de backend evenals de frontend in JavaScript te programmeren. Meteor is zeer recent, op het moment van schrijven is Meteor nog in beta, versie 0.9.3.1 om precies te zijn. Dit brengt natuurlijk wel de nodige problemen met zich mee, weinig documentatie en vooral veel kans op performance issues. Meteor zelf maakt gebruik van het publish-subscribe pattern om zogenaamde collecties van de server naar de client beschikbaar te maken. Deze collecties zijn niets anders als tabellen, op de server worden ze gepublished en op de client kun je deze dan ontvangen (subscriben). Op de server kun je aangeven welke velden er wel beschikbaar worden gemaakt en welke niet, wegens performance issues is het natuurlijk beter om alleen de velden beschikbaar te maken die nodig zijn.
+
+Meteor beschikt ook over iets wat heet latency compensation. Als een eind-gebruiker iets veranderd ziet deze eind-gebruiker de verandering meteen. Meteor stuurt dit daarna op, ontvangt de respons, vergelijkt dit met de client en voert daarna de echte wijziging door. De eind-gebruiker ziet hier niets van, tenzij er iets mis gaat in het proces van vergelijken maar dat gebeurt nagenoeg nooit. Met een platform waar heel veel data in staat kan het wel eens zijn dat de database verbinding wat aan de trage kant wordt, Meteor zorgt ervoor dat hoe langzaam de verbinding ook wordt de eind-gebruiker hier maar minimaal mee te maken zal hebben.
+
+\newline
+
+Profile2Connect wordt gemaakt door mij en nog een medewerker van ConnectSB, Jimmy. Ik ben verantwoordeljik voor de homepage van Profile2Connect; deze ziet er als volgt uit:
+\includegraphics[scale=0.5]{profile2connect}
 
 
 \subsection{Versiebeheer}
