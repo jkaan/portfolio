@@ -8,9 +8,7 @@
 \usepackage{pdfpages} % For including pdfpages
 \usepackage{ltablex} % For use of page break inside of tabularx environments
 \usepackage{biblatex} % For referencing and bibliographies
-
-% Include the bibliography file
-\bibliography{references.bib}
+\usepackage{cite} % For citing of bibliography references
 
 \include{cover}
 
@@ -32,7 +30,8 @@
 
 \include{sections/attachments}
 
-\printbibliography
+\bibliography{references}{}
+\bibliographystyle{plain}
 
 \end{document}
 
