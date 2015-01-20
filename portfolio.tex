@@ -7,8 +7,97 @@
 \usepackage{tabularx} % For table headers
 \usepackage{pdfpages} % For including pdfpages
 \usepackage{ltablex} % For use of page break inside of tabularx environments
-\usepackage{biblatex} % For referencing and bibliographies
-\usepackage{cite} % For citing of bibliography references
+\usepackage[sorting=none]{biblatex} % For referencing and bibliographies
+\usepackage{float} % For using figure environments, mainly for images and such
+\usepackage[font=footnotesize]{caption} % Changing the font of the standard caption
+\usepackage{listings} % For the code snippets
+\usepackage{color} % For the custom colors for the code snippest coloring
+\usepackage[framemethod=tikz]{mdframed} % For removing the white lines which are shown with the listings package
+\usepackage[xindy]{glossaries} % For the glossary
+
+\bibliography{references}
+\makeglossaries
+
+% Redefine \figurename so the figures have custom names
+\renewcommand{\figurename}{Afbeelding}
+
+% Redefine \lstlistingname so the code snipppest have custom names
+\renewcommand{\lstlistingname}{Code Snippet}
+
+% Fill the glossary list
+\newglossaryentry{collection}
+{
+  name=collectie,
+  description={Equivalent van een tabel in MySQL.}
+}
+
+\newglossaryentry{gitflow}
+{
+  name={Gitflow workflow},
+  description={Een git workflow die lijkt op de Feature branch workflow, maar geeft specifieke rollen aan verschillende branches en specificeert ook hoe deze branches met elkaar moeten samenwerken en wanneer. Naast feature branches zijn er ook nog branches voor het klaarmaken, onderhouden en bijhouden van releases\cite{Gitflow}
+  }
+}
+
+\newglossaryentry{redmine}
+{
+name={Redmine},
+description={Een project management web applicatie\cite{Redmine}}
+}
+
+\newglossaryentry{peerreviews}
+{
+  name={peerreviews},
+  description={Voltooide werk laten beoordelen door collega's\cite{peerreview}}
+}
+
+% Define colors for use in the new language
+\definecolor{codebackground}{RGB}{63,63,63}
+\definecolor{codecolor}{RGB}{183,196,202}
+\definecolor{keywordscolor}{RGB}{215,139,63}
+\definecolor{stringcolor}{RGB}{121,151,108}
+\definecolor{ndkeywordscolor}{RGB}{255,207,144}
+\definecolor{commentscolor}{RGB}{127,146,146}
+
+% Define a new language, JavaScript
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break, this},
+  keywordstyle=\color{keywordscolor}\fontfamily{sourcesanspro}\selectfont,
+  ndkeywords={class, export, boolean, throw, implements, import, publish, find, subscribe, fetch},
+  ndkeywordstyle=\color{ndkeywordscolor}\fontfamily{sourcesanspro}\selectfont,
+  identifierstyle=\color{codecolor}\fontfamily{sourcesanspro}\selectfont,
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{commentscolor}\fontfamily{sourcesanspro}\selectfont,
+  stringstyle=\color{stringcolor}\fontfamily{sourcesanspro}\selectfont,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+% Use the newly defined language
+\lstset{
+   language=JavaScript,
+   backgroundcolor=\color{codebackground},
+   extendedchars=true,
+   basicstyle=\scriptsize\color{codecolor}\fontfamily{sourcesanspro}\selectfont,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize\fontfamily{sourcesanspro}\selectfont,
+   numbersep=3pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
+% Surround all code blocks with a frame of the same color so white lines don't appear
+\surroundwithmdframed[
+hidealllines=true,
+backgroundcolor=codebackground,
+innerleftmargin=15pt,
+innertopmargin=0pt,
+innerbottommargin=-20pt]{lstlisting}
 
 \include{cover}
 
@@ -30,8 +119,15 @@
 
 \include{sections/attachments}
 
-\bibliography{references}
-\bibliographystyle{plain}
+\let\Section\section
+\def\section*#1{\Section{#1}}
+
+\printglossary[title=Begrippen, toctitle=Begrippen]
+
+% Make sure the bibliography is always on a new page
+\clearpage
+
+\printbibliography[title=Bronnen]
 
 \end{document}
 

@@ -1,0 +1,11 @@
+PWD /Users/joey/Development/LaTeX/portfolio/sections
+INPUT /usr/local/texlive/2014/texmf.cnf
+INPUT /usr/local/texlive/2014/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2014/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT /Users/joey/Development/LaTeX/portfolio/sections/burdenofproof.tex
+OUTPUT burdenofproof.log
+OUTPUT burdenofproof.pdf
+INPUT /usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT /usr/local/texlive/2014/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/local/texlive/2014/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/local/texlive/2014/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm

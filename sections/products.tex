@@ -1,5 +1,5 @@
 \section{Producten}
-Dit hoofdstuk bevat de producten waar tijdens de stage bij ConnectSB aan gewerkt wordt. Deze producten vormen de basis voor de bewijslast van de opgestelde leerdoelen die in de bijlage in het Plan van Aanpak staan.
+Dit hoofdstuk bevat de producten waar tijdens de stage bij ConnectSB aan gewerkt wordt. Deze producten vormen de basis voor de bewijslast van de opgestelde leerdoelen die in de bijlage in het Plan van Aanpak staan. Aller eerste een globale beschrijving van de producten en daarna in de paragraaf technische details wordt uitgelegd met welke technologiën ze gerealiseerd zijn.
 
 \subsection{Content2Connect}
 Content2Connect is een platform waar bedrijven grafische content in de vorm van een opdracht kunnen aanvragen. Deze bedrijven hebben dan een account waar ze de voortgang van de opdracht kunnen inzien.
@@ -8,8 +8,33 @@ In het platform bestaan vier rollen; de klant, de designer, de contactpersoon en
 
 Als er een opdracht aangevraagd wordt zal er ook altijd een telefonische briefing plaatsvinden. Deze briefing wordt ook afgehandeld door de contact persoon. Een klant heeft ook de mogelijkheid om één keer een aanpassing aan te vragen. Een designer zet dus de content van de klant klaar, de klant heeft dan de mogelijkheid om deze goed te keuren of af te wijzen. Als deze wordt afgekeurd moet er commentaar toegevoegd worden met de wijziging die toegepast moet worden. De designer past deze dan aan en dan is de opdracht klaar. Als de opdracht dan niet goed wordt gevonden moet er weer opnieuw een opdracht aangevraagd worden.
 
+\begin{minipage}{0.60\textwidth}
+\begin{figure}[H]
+\includegraphics[width=\textwidth,keepaspectratio]{attachments/Content2Connect-home}
+\caption{\label{fig:content2connect-home} Content2Connect welkomst pagina}
+\end{figure}
+\end{minipage} \hfill
+
+\subsubsection{Technische details}
+Content2Connect is gemaakt met PHP en dan het Symfony framework. ConnectSB gebruikte dit tot voor kort exclusief voor alle apps en projecten die ze ontwikkelden. Symfony is opgebouwd uit losse componenten, als je dus een bepaald aspect van het framework wil gebruiken is dit heel gemakkelijk zonder dat je meteen duizenden klassen ook moet importeren zonder dat je deze zult gebruiken.
+
+Bij ConnectSB en dus ook voor Content2Connect is er gebruik gemaakt van de Symfony Framework Standard Edition. Deze bestaat uit een aantal losse projecten:
+\begin{itemize}
+\item Doctrine
+\item Twig
+\item Assetic
+\item Swiftmailer
+\item Monolog
+\end{itemize}
+
+Deze standard edition stelt je in staat om meteen een volwaardige en veilige PHP applicatie te bouwen. Het is zo makkelijk om met Symfony te beginnen en daarom heeft ConnectSB ook de keuze genomen om Symfony te gebruiken. Verderop in het portfolio zal er wat meer gereflecteerd worden op het Symfony framework.
+
 \subsection{Profile2Connect}
 Profile2Connect is het nieuwste platform van ConnectSB dat zich momenteel nog in het alpha stadium bevindt. Het moet gaan dienen als een enorme database met gegevens van alle klanten van een bepaald bedrijf. Als bijvoorbeeld Jumbo gebruik zou maken van dit platform dan zal Profile2Connect alle gegevens van alle klanten van Facebook, Twitter, Pinterest en Instragram opslaan en hier alle beschikbare data van verzamelen. ConnectSB heeft ook verschillende Facebook apps waar klanten van Jumbo aan mee hebben gedaan, de data die hiervan opgeslagen is kan dus ook in Profile2Connect gebruikt worden. Kortom; alle data die beschikbaar is voor die specifieke klant zal gebruikt en opgeslagen worden.
 
 De klant heeft zelf de macht over het importeren en exporteren van de data, ze kunnen zelf een facebook account koppelen of een twitter account koppelen. De klant heeft dus alle macht in handen wat betreft de data die opgeslagen wordt. Als er zoveel data in de database staat moet er natuurlijk ook wat mee gedaan worden. Er is een dashboard aanwezig dat bijvoorbeeld de grootste fan van het merk laat zien wat wordt bepaald door een algoritme. Dit is maar één van de vele algoritmes die in Profile2Connect aanwezig zullen zijn. Bijvoorbeeld mensen die geïnteresseerd zijn in de nieuwsbrief van het bedrijf kunnen ook uit het systeem worden gehaald. Ze kunnen gesorteerd worden op een bepaalde waarde, bijvoorbeeld het aantal likes op de Facebook pagina of het aantal mentions op twitter.
+
+\subsubsection{Technische details}
+Normaliter deed ConnectSB alles met PHP en dan vooral het Symfony framework. Profile2Connect was een speciaal geval, het moest mogelijk zijn om heel veel data op te slaan en dynamisch velden toe te voegen aan de database. Door deze speciale eisen is er toen gekozen voor Meteor. Meteor is een JavaScript framework waarmee het mogelijk is om de backend evenals de frontend in JavaScript te programmeren. Meteor is zeer recent, op het moment van schrijven is Meteor nog in beta, versie 0.9.3.1 om precies te zijn. Dit brengt natuurlijk wel de nodige problemen met zich mee, weinig documentatie en vooral veel kans op performance issues. Meteor zelf maakt gebruik van het publish-subscribe pattern om zogenaamde collecties van de server naar de client beschikbaar te maken. Deze collecties zijn niets anders als tabellen, op de server worden ze gepublished en op de client kun je deze dan ontvangen (subscriben). Op de server kun je aangeven welke velden er wel beschikbaar worden gemaakt en welke niet, wegens performance issues is het natuurlijk beter om alleen de velden beschikbaar te maken die nodig zijn. Op basis van de regels die ingesteld zijn met het publish-subscribe mechanische van Meteor houdt Meteor een kopie van de database op de client bij. Dit wordt gedaan door middel van een pakket dat heet Minimongo. Meteor is gewoon een verzameling van pakketten, de backend functionaliteit wordt mogelijk gemaakt door NodeJS. De frontend is een mix van jQuery, Spacebars en aantal functionaliteit van Meteor zelf. Spacebars is een licht aangepaste versie van Handlebars.
+
 \clearpage
